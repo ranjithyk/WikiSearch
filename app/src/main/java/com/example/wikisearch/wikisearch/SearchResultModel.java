@@ -48,7 +48,7 @@ public class SearchResultModel implements Serializable {
     public class Pages implements Serializable {
 
         @SerializedName("pageid")
-        public int pageid;
+        public String pageid;
 
         @SerializedName("ns")
         public int ns;
