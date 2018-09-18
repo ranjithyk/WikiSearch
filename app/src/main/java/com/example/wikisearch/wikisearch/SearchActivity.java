@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -48,8 +49,10 @@ public class SearchActivity extends BaseActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                //When the text changed call wiki API and get the search result
-                getSearchResult(charSequence.toString());
+                if(charSequence.length() > 0) {
+                    //When the text changed call wiki API and get the search result
+                    getSearchResult(charSequence.toString());
+                }
             }
 
             @Override
@@ -94,29 +97,34 @@ public class SearchActivity extends BaseActivity {
 
     private void setResultListView(JSONObject response) {
 
-        //convert the response into Model class
-        GsonBuilder builder = new GsonBuilder();
-        Gson mGson = builder.create();
-        searchResultModel = mGson.fromJson(response.toString(), SearchResultModel.class);
+        try {
+            //convert the response into Model class
+            GsonBuilder builder = new GsonBuilder();
+            Gson mGson = builder.create();
+            searchResultModel = mGson.fromJson(response.toString(), SearchResultModel.class);
 
-        if(searchResultModel == null || searchResultModel.query == null)
-            return;
+            if (searchResultModel == null || searchResultModel.query == null)
+                return;
 
-        SearchResultListAdapter searchResultListAdapter = new SearchResultListAdapter(this, searchResultModel);
-        searchResultListView = findViewById(R.id.search_result_list);
-        searchResultListView.setAdapter(searchResultListAdapter);
+            SearchResultListAdapter searchResultListAdapter = new SearchResultListAdapter(this, searchResultModel);
+            searchResultListView = findViewById(R.id.search_result_list);
+            searchResultListView.setAdapter(searchResultListAdapter);
 
-        searchResultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            searchResultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(getApplicationContext(), WikiContentActivity.class);
-                intent.putExtra("PAGE_ID",searchResultModel.query.pages[position].pageid);
+                    Intent intent = new Intent(getApplicationContext(), WikiContentActivity.class);
+                    intent.putExtra("PAGE_ID", searchResultModel.query.pages[position].pageid);
 
-                //When user clicked the list item launch the wiki page
-                startActivity(intent);
-            }
-        });
+                    //When user clicked the list item launch the wiki page
+                    startActivity(intent);
+                }
+            });
+        }
+        catch (Exception ex) {
+            Log.e(ex.getMessage(),ex.getStackTrace().toString());
+        }
     }
 
     //Build the url for the wiki API request

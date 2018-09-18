@@ -59,8 +59,7 @@ public class SearchResultListAdapter extends ArrayAdapter {
 
             return searchResultRow;
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             Log.e(ex.getMessage(),ex.getStackTrace().toString());
         }
 
