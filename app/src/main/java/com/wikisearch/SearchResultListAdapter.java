@@ -1,14 +1,12 @@
-package com.example.wikisearch.wikisearch;
+package com.wikisearch;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -60,7 +58,7 @@ public class SearchResultListAdapter extends ArrayAdapter {
             return searchResultRow;
         }
         catch (Exception ex) {
-            Log.e(ex.getMessage(),ex.getStackTrace().toString());
+            //Log.e(ex.getMessage(),ex.getStackTrace().toString());
         }
 
         return null;

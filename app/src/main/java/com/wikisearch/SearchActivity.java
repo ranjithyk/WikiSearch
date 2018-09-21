@@ -1,11 +1,9 @@
-package com.example.wikisearch.wikisearch;
+package com.wikisearch;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -114,16 +112,24 @@ public class SearchActivity extends BaseActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    Intent intent = new Intent(getApplicationContext(), WikiContentActivity.class);
-                    intent.putExtra("PAGE_ID", searchResultModel.query.pages[position].pageid);
+                    try {
 
-                    //When user clicked the list item launch the wiki page
-                    startActivity(intent);
+                        if(searchResultModel !=null && searchResultModel.query.pages.length >= position) {
+                            Intent intent = new Intent(getApplicationContext(), WikiContentActivity.class);
+                            intent.putExtra("PAGE_ID", searchResultModel.query.pages[position].pageid);
+
+                            //When user clicked the list item launch the wiki page
+                            startActivity(intent);
+                        }
+                    }
+                    catch (Exception ex) {
+                        //Log.e(ex.getMessage(),ex.getStackTrace().toString());
+                    }
                 }
             });
         }
         catch (Exception ex) {
-            Log.e(ex.getMessage(),ex.getStackTrace().toString());
+            //Log.e(ex.getMessage(),ex.getStackTrace().toString());
         }
     }
 

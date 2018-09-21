@@ -1,4 +1,4 @@
-package com.example.wikisearch.wikisearch;
+package com.wikisearch;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -2,5 +2,5 @@
     <string name="app_name">WikiSearch</string>
     <string name="welcome_message">Welcome to WikiSearch!</string>
     <string name="search_button_text">Click to search</string>
-    <string name="search_hint_text">Enter text to seach</string>
+    <string name="search_hint_text">Enter text to search</string>
 </resources>

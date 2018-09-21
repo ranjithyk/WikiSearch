@@ -1,4 +1,4 @@
-package com.example.wikisearch.wikisearch;
+package com.wikisearch;
 
 public class Constants {
 

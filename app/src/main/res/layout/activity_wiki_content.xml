@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wikisearch.wikisearch.WikiContentActivity">
+    tools:context="com.wikisearch.WikiContentActivity">
 
     <WebView
         android:layout_width="match_parent"

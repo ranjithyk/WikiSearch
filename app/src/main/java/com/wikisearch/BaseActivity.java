@@ -1,4 +1,4 @@
-package com.example.wikisearch.wikisearch;
+package com.wikisearch;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

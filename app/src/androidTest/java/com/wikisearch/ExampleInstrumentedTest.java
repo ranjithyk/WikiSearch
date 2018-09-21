@@ -1,4 +1,4 @@
-package com.example.wikisearch.wikisearch;
+package com.wikisearch;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.wikisearch.wikisearch", appContext.getPackageName());
+        assertEquals("com.wikisearch", appContext.getPackageName());
     }
 }
